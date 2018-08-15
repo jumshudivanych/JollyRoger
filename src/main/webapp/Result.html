@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <!-- Подключаем библиотеку -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+<H1>Эта страница на HTML</H1>
+<div name=history>
+    Message:
+
+    <script>
+    $.ajax({
+    url: 'http://192.168.0.12:8080/JollyRoger/getMessage',
+    success: function(){
+    alert('Вам сообщение!');
+    }
+    });
+    </script>
+    <script>
+    var timeoutID;
+
+    function delayedAlert() {
+    timeoutID = window.setTimeout(slowAlert, 3000);
+    }
+    delayedAlert();
+    function slowAlert() {
+    $.ajax({
+    url: "http://192.168.0.12:8080/JollyRoger/getMessage"),
+    cache: false,
+    success: function(msg){
+    delayedAlert();
+    }
+    });
+    }
+    </script>
+</div>
+
+<div name=chat>
+
+    <form action="send" method="post">
+        <p><input placeholder="Welcome!" name="message">
+        <p><input type="submit" value="Send"></p>
+    </form>
+
+
+
+    <form action="getMessage" method="post">
+        <p><input type="submit" value="getMessage"></p>
+    </form>
+</div>
+</body>
+</html>

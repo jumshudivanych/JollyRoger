@@ -1,0 +1,111 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>accessSqlite</servlet-name>
+    <servlet-class>com.sandbox50572.AccessSqlite</servlet-class>
+    <!-- попытка сделать сервлет singleton -->
+    <!--load-on-startup>1</load-on-startup -->
+    <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
+    <init-param>
+      <param-name>key</param-name>
+      <param-value>value</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>accessSqlite</servlet-name>
+    <url-pattern>/toSqlite</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>sendServlet</servlet-name>
+    <servlet-class>com.sandbox50572.SendServlet</servlet-class>
+    <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
+    <!-- -->
+    <init-param>
+      <param-name>key</param-name>
+      <param-value>value</param-value>
+    </init-param>
+    <init-param>
+      <param-name>key2</param-name>
+      <param-value>value2</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sendServlet</servlet-name>
+    <url-pattern>/send</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>getMessageServlet</servlet-name>
+    <servlet-class>com.sandbox50572.GetMessageServlet</servlet-class>
+    <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
+    <!-- -->
+    <init-param>
+      <param-name>key</param-name>
+      <param-value>value</param-value>
+    </init-param>
+    <init-param>
+      <param-name>key2</param-name>
+      <param-value>value2</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getMessageServlet</servlet-name>
+    <url-pattern>/getMessage</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>com.sandbox50572.LoginServlet</servlet-class>
+    <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
+    <!-- -->
+    <init-param>
+      <param-name>key</param-name>
+      <param-value>value</param-value>
+    </init-param>
+    <init-param>
+      <param-name>key2</param-name>
+      <param-value>value2</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>adminServlet</servlet-name>
+    <servlet-class>com.sandbox50572.AdminServlet</servlet-class>
+    <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
+    <!-- -->
+    <init-param>
+      <param-name>key</param-name>
+      <param-value>value</param-value>
+    </init-param>
+    <init-param>
+      <param-name>key2</param-name>
+      <param-value>value2</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminServlet</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+
+  <!-- дефолтный сервлет Tomcat указывает на папку resources -->
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/resources/*</url-pattern>
+  </servlet-mapping>
+
+
+  <!-- *** LISTENERS *** -->
+  <listener>
+    <listener-class>com.sandbox50572.AppContext</listener-class>
+  </listener>
+</web-app>
