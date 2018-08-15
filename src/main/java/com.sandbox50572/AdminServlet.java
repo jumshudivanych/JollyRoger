@@ -13,6 +13,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Enumeration;
 
+/**
+ * Добавить admin.jsp и реализовать полнофункциональную работу с базой данных
+ * выборка по id удаление итд.
+ */
+
 public class AdminServlet extends HttpServlet {
 
     String config1;//переменная для получения параметров инициализации по ключу из web.xml
