@@ -65,12 +65,12 @@
     <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
     <!-- -->
     <init-param>
-      <param-name>key</param-name>
-      <param-value>value</param-value>
+      <param-name>adminLogin</param-name>
+      <param-value>jumshudivanych</param-value>
     </init-param>
     <init-param>
-      <param-name>key2</param-name>
-      <param-value>value2</param-value>
+      <param-name>adminPassword</param-name>
+      <param-value>1234cani</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
@@ -95,6 +95,25 @@
   <servlet-mapping>
     <servlet-name>adminServlet</servlet-name>
     <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>regServlet</servlet-name>
+    <servlet-class>com.sandbox50572.RegServlet</servlet-class>
+    <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
+    <!-- -->
+    <init-param>
+      <param-name>key</param-name>
+      <param-value>value</param-value>
+    </init-param>
+    <init-param>
+      <param-name>key2</param-name>
+      <param-value>value2</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>regServlet</servlet-name>
+    <url-pattern>/reg</url-pattern>
   </servlet-mapping>
 
   <!-- дефолтный сервлет Tomcat указывает на папку resources -->

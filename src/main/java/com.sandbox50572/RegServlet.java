@@ -14,16 +14,14 @@ import java.sql.Statement;
 import java.util.Enumeration;
 
 /**
- * Добавить admin.jsp и реализовать полнофункциональную работу с базой данных
- * выборка по id удаление итд.
- * <!-- url-pattern>/admin</url-pattern -->
+ * При регистрации добавить проверку уникальности login
+ * <!-- url-pattern>/reg</url-pattern -->
  */
 
-public class AdminServlet extends HttpServlet {
+public class RegServlet extends HttpServlet {
 
     String config1;//переменная для получения параметров инициализации по ключу из web.xml
     String config2;
-    String message;
 
     //метод выполняется при создании сервлета
     @Override
@@ -31,14 +29,22 @@ public class AdminServlet extends HttpServlet {
         super.init(config);
         config1 = getInitParameter("key");
         config2 = getInitParameter("key2");
-
     }
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String name = "Session ID= " + request.getRequestedSessionId();
-        //String message = null;
+
+        try {
+            request.getRequestDispatcher("/reg.jsp").forward(request, response);//перенаправление
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+
+        String SessionID = request.getRequestedSessionId();//получение SessionId
+
         String Uri = request.getRequestURI();//получение Uri
+        /*
         //получение полей Http заголовка
         Enumeration headerNames = request.getHeaderNames();
         while(headerNames.hasMoreElements()) {
@@ -88,20 +94,23 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        */
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        String message = null;
-        String name = null;
+        String username = null;
+        String password = null;
         System.out.println("Enter doPost");
 
         request.setCharacterEncoding("UTF-8");
         String headers = request.getHeader(request.toString());//получение заголовка запроса
-        message = request.getParameter("message");//получаем в переменную значение параметра
-        ServletContext servletContext = getServletContext ();
-        servletContext.setAttribute("message", message);
+        username = request.getParameter("username");//получаем в переменную значение параметра
+        password = request.getParameter("password");//получаем в переменную значение параметра
+        //ServletContext servletContext = getServletContext ();
+        //servletContext.setAttribute("message", message);
         System.out.println(headers);
 
 
@@ -110,7 +119,7 @@ public class AdminServlet extends HttpServlet {
             Class.forName("org.sqlite.JDBC");
             //создание подключения
             Connection connection = DriverManager.getConnection(
-                    "jdbc:sqlite:C:\\idea\\sqlite\\users.db");//строка подключения
+                    "jdbc:sqlite:C:\\idea\\sqlite\\login.db");//строка подключения
             //в строке подключения либо полный путь к фаилу либо
             //имя фаила если в тои же папке
             System.out.println("Connected");
@@ -118,8 +127,8 @@ public class AdminServlet extends HttpServlet {
             Statement stmt;
             stmt = connection.createStatement();
             //Запрос на добавление записи
-            stmt.executeUpdate("INSERT INTO 'users' ('name', 'message') VALUES ('" + name + "', '" + message + "')");
-            System.out.println("Запись добавлена");
+            stmt.executeUpdate("INSERT INTO 'loginmap' ('login', 'pass') VALUES ('" + username + "', '" + password + "')");
+            System.out.println("Пользователь зарегистрирован");
             stmt.close();
             connection.close();
 
@@ -130,7 +139,11 @@ public class AdminServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.getRequestDispatcher("/simple.jsp").forward(request, response);
+            try {
+                request.getRequestDispatcher("/login").forward(request, response);//перенаправление зарегистрированного пользователя
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
 
     }
 }

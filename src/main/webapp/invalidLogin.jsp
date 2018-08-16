@@ -25,7 +25,7 @@
 </header>
 
 <p>
-<H1>Registration or login.</H1>
+<H1>Invalid login or password.</H1>
 
 
 </body>
