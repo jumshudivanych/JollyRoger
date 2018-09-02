@@ -81,6 +81,9 @@ public class LoginServlet extends HttpServlet {
 
                 if(username.equals(login) && password.equals(pass)) {
                     //переходить на страницу зарегистрированного пользователя
+                    //передавать через Session attribute
+                    request.getSession().setAttribute("username", login);
+                    //request.setAttribute("username", login);
                     request.getRequestDispatcher("/simple.jsp").forward(request, response);
                 }
 

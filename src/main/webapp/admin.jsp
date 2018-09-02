@@ -101,10 +101,15 @@ Message in ServletContext: <%
     </form>
 
 </div>
-<div name=update>
+<div name="update">
     <form action="getMessage" method="post">
         <p><input type="submit"  id="a" class="button" value="getMessage"></p>
         </form>
+</div>
+<div name="delete">
+    <form action="delFromSqlite" method="post">
+    <p><input type="submit" id="b" class="button" value="DELETE FROM users"></p>
+    </form>
 </div>
 </body>
 </html>

@@ -39,9 +39,13 @@
    else
       am_pm = "PM";
    String CT = hour+":"+ minute +":"+ second +" "+ am_pm;
-   out.println("当前时间为: " + CT + "\n");
+   out.println(" " + CT + "\n");
 %>
-<h2>Welcome!</h2>
+<h2>Welcome <%
+               String username = request.getSession().getAttribute("username").toString();
+               out.println(username);
+             %>
+               </h2>
 <div id="contact_form">
 Message in ServletContext: <%
             ServletContext sc = request.getServletContext();
@@ -52,7 +56,9 @@ Message in ServletContext: <%
 <script>
 
 </script>
-<p>Message in sqlite: <%
+<p>Message in sqlite:
+ <table>
+<%
                          try {
                                      Statement stmt;
                                      //инициализация драивера базы данных
@@ -73,10 +79,13 @@ Message in ServletContext: <%
                                                      String  name = resSet.getString("name");
                                                      String  message = resSet.getString("message");
 
-                                                     out.println("ID = " + id);
-                                                     out.println("name = " + name);
-                                                     out.println("message = " + message);
+                                                     //out.println("<tr><td class='f1_label'>ID :</td><td><input type='text' name='id' value=" + id + "></td></tr>");
+                                                     //out.println("<tr><td class='f1_label'>User Name :</td><td><input type='text' name='username' value=" + name + "></td></tr>");
+                                                     //out.println("<tr><td class='f1_label'>Message :</td><td><input type='text' name='message' value=" + message + "></td></tr>");
 
+                                                     out.println(id);
+                                                     out.println(name);
+                                                     out.println(message);
                                                  }
 
                                                  resSet.close();
@@ -92,11 +101,13 @@ Message in ServletContext: <%
                                      e.printStackTrace();
                                  }
                       %>
+ </table>
 
 <div id="message" name="chat">
 
     <form action="send" method="post">
-     <p><input placeholder="Welcome!" name="message">
+    //не передает параметр username
+     <p><input placeholder="Welcome!" name="message" param= username>
      <p><input type="submit" value="Send"></p>
     </form>
 

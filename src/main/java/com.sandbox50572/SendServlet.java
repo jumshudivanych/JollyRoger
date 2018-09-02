@@ -42,7 +42,7 @@ public class SendServlet extends HttpServlet {
         //получение полей Http заголовка
         Enumeration headerNames = request.getHeaderNames();
         while(headerNames.hasMoreElements()) {
-            String headerName = (String)headerNames.nextElement();
+            String headerName = (String)headerNames.nextElement();//работа с заголовком
 
             if(headerName.equals("message")) {
                 message = request.getHeader(headerName).toString();
@@ -100,6 +100,7 @@ public class SendServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String headers = request.getHeader(request.toString());//получение заголовка запроса
         message = request.getParameter("message");//получаем в переменную значение параметра
+        name = request.getParameter("param");
         ServletContext servletContext = getServletContext ();
         servletContext.setAttribute("message", message);
         System.out.println(headers);

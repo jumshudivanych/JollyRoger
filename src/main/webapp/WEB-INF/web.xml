@@ -98,6 +98,25 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>deleteFromSqlite</servlet-name>
+    <servlet-class>com.sandbox50572.DeleteFromSqlite</servlet-class>
+    <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
+    <!-- -->
+    <init-param>
+      <param-name>adminLogin</param-name>
+      <param-value>jumshudivanych</param-value>
+    </init-param>
+    <init-param>
+      <param-name>adminPassword</param-name>
+      <param-value>1234cani</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteFromSqlite</servlet-name>
+    <url-pattern>/delFromSqlite</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>regServlet</servlet-name>
     <servlet-class>com.sandbox50572.RegServlet</servlet-class>
     <!-- параметры задаваемые при создании сервлета, фильтра , листенера -->
